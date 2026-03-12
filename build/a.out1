@@ -1,0 +1,25 @@
+**** module/scope: tb
+     Flip-Flops   : 0
+     Logic Gates  : 0
+     LOG[13]: 1 unaccounted
+     LOG[14]: 1 unaccounted
+**** module/scope: tb.uut
+     Flip-Flops   : 0
+     Logic Gates  : 4
+**** module/scope: tb.uut.fa0
+     Flip-Flops   : 0
+     Logic Gates  : 6
+**** module/scope: tb.uut.fa1
+     Flip-Flops   : 0
+     Logic Gates  : 6
+**** module/scope: tb.uut.fa2
+     Flip-Flops   : 0
+     Logic Gates  : 6
+**** module/scope: tb.uut.fa3
+     Flip-Flops   : 0
+     Logic Gates  : 6
+**** TOTALS
+     Flip-Flops   : 0
+     Logic Gates  : 28
+     LOG[13]: 1 unaccounted
+     LOG[14]: 1 unaccounted
