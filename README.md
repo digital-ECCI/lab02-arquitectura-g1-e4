@@ -50,13 +50,17 @@ El circuito opera bajo una lógica binaria dependiente de la entrada de control 
 #### 1.2 Diagramas
 
 
+El proyecto se basó en la optimización de recursos aritméticos mediante la técnica de Complemento a 2. El diseño permitió unificar las operaciones de suma y resta en un solo bloque funcional, utilizando la propiedad matemática $A - B = A + (\sim B + 1)$.Para la implementación, se integraron compuertas XOR que actúan como inversores controlados: Modo Suma ($Sel = 0$): El dato $B$ pasa íntegro y el acarreo inicial ($C_{in}$) es 0.Modo Resta ($Sel = 1$): Las XOR invierten los bits de $B$ (Complemento a 1) y el bit $Sel$ se introduce al $C_{in}$ del primer sumador, sumando el "+1" necesario para completar el Complemento a 2. 
+En Visual Studio & GTKWave, antes de la transferencia al hardware, se realizó una verificación funcional rigurosa. Utilizando un testbench en Visual Studio, se generaron estímulos para cubrir casos críticos de la aritmética binaria. Los resultados se analizaron en GTKWave, donde se validó que las formas de onda de los sumadores internos, los acarreos intermedios ($C_{out}$) y el resultado final coincidieran con los cálculos teóricos esperados, garantizando un diseño libre de errores lógicos. Para la implementación Física y Configuración (FPGA MAX 10)La fase final consistió en la síntesis y carga del diseño en la FPGA Intel 10M50DAF484C7G. Un paso crucial fue la utilización del Pin Planner, donde se asignaron las señales lógicas a los recursos físicos de la placa: Entradas: Los Switches (SW) se mapearon para representar los operandos $A$, $B$ y la señal de control $Sel$.Salidas: Los LEDs se configuraron para visualizar el resultado binario y el estado del acarreo de salida ($C_o$).
+La implementación en hardware demostró una fidelidad del 100% respecto a la simulación. Se comprobaron casos prácticos directamente en la tarjeta:Ejemplo Positivo ($7 - 5$): Al configurar los switches, se obtuvo 0010 (2 decimal) en los LEDs, con el bit de acarreo en 1, validando un resultado positivo. Ejemplo Negativo ($3 - 7$): Se obtuvo 1100, que corresponde a $-4$ en complemento a 2, con un acarreo de 0.
+
 ![simulacion en gtkwave](image.png)
 
 ![simulacion en gtkwave2](image-1.png)
 
 ## Evidencias de implementación
 
-
+<video src="video 1.mp4" controls width="500"></video>
 
 ## Conclusiones
 
