@@ -23,9 +23,63 @@ Indice:
 
 ### 1. Sumador/Restador
 
+
+
 #### 1.1 Descripción
 
+¿Qué se hizo exactamente?
+
+En este laboratorio se construyo un circuito combinacional que puede sumar o restar dos números de 4 bits. La magia está en que uso el mismo sumador para ambas operaciones, solo cambiando una señal de control llamada Sel.
+
+El secreto: Complemento a 2
+
+Para restar A - B se hace:
+
+A - B = A + (-B)
+
+Y -B se calcula fácil: inviertiendo todos los bits de B y sumando 1.
+
+Diagrama del Sumador Base (4 bits)
+
+![Modelo](SUMADOR-RESTADOR.png)
+
+Sumador restador de 2 numeros de 4 bits
+
+Primero reutilizamos el sumador que se tenía del Lab01
+
+Cómo funciona por dentro:
+Cuatro "sumadores de 1 bit" conectados en cadena (ripple carry):
+
+    Bit 0: A0+B0+Cin → S0 + C1
+
+    Bit 1: A1+B1+C1 → S1 + C2
+
+    ... hasta bit 3.
+
+    Sumador/Restador Completo
+
+Agregamos 4 compuertas XOR y la señal Sel:
+
+De esta manera: 
+
+Cuando Sel=0 (SUMA):
+
+    XOR no cambia B (B ⊕ 0 = B)
+
+    Cin=0
+    → A + B
+
+Cuando Sel=1 (RESTA):
+
+    XOR invierte B (B ⊕ 1 = ~B)
+
+    Cin=1 (suma el +1)
+    → A + (~B + 1) = A - B
+
+![XOR](4-BIT-XOR.png)
+
 #### 1.2 Diagramas
+
 
 ![Asignacion de pin planner](image-2.png)
 
